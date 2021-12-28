@@ -3,6 +3,10 @@
 body {
   margin: 0;
 }
+.CodeMirror-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .top-pane {
   background-color: hsl(225, 6%, 25%);
 }
@@ -13,15 +17,17 @@ body {
 
 .editor-container {
   flex-grow: 1;
-  flex-basis: 0;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
   background-color: hsl(225, 6%, 25%);
+  transition: all 0.3s ease;
 }
+
 .editor-title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: hsl(225, 6%, 13%);
   color: rgb(160, 160, 160);
   padding: 0.5rem 0.5rem 0.5rem 1rem;
@@ -30,6 +36,22 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.expand-button {
+  padding: 0;
+  width: 0.8em;
+  height: 0.8em;
+  border: none;
+  margin-left: 20px;
+  transition: all 0.3s 0.25s ease;
+}
+
+.expand-button.open {
+  border-radius: 50%;
+  background-color: red;
+}
+.expand-button.close {
+  background-color: lime;
+}
 .CodeMirror {
   height: 100% !important;
 }
@@ -39,4 +61,12 @@ body {
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   overflow: hidden;
+}
+
+.editor-container.collapsed {
+  flex-grow: 0;
+}
+
+.editor-container.collapsed .CodeMirror-scroll {
+  position: absolute;
 }

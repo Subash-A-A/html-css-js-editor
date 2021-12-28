@@ -43,7 +43,7 @@ function App() {
           onChange={setJs}
         />
       </div>
-      <div className="pane">
+      <div className="pane window">
         <iframe
           srcDoc={srcDoc}
           title="output"
